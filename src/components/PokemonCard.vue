@@ -7,7 +7,7 @@
       <span
         v-for="element in pokemon.types"
         :key="element.slot"
-        :class="['type', getBackgroundColor(element.type.name)]"
+        :class="['type', getTypeColor(element.type.name)]"
       >
         {{ element.type.name }}
       </span>
@@ -17,7 +17,6 @@
         <strong>{{ stat.stat.name }}:</strong> {{ stat.base_stat }}
       </div>
     </div>
-    <!-- Add more information as needed -->
   </div>
 </template>
 
@@ -30,20 +29,34 @@ export default {
     },
   },
   methods: {
-    getBackgroundColor(typeName) {
-      // Map element types to corresponding background colors
+    getBackgroundColor() {
       const typeColors = {
         normal: "#a8a878",
         fire: "#f08030",
-        // Add more colors for other types
+        water: "#6890F0",
+        grass: "#78C850",
+        electric: "#F8D030",
       };
 
-      // Sanitize the type name to ensure it's a valid key
+      // If there are multiple types, you can choose how to prioritize
+      const primaryType = this.pokemon.types[0]?.type.name || "normal";
+
+      return typeColors[primaryType.toLowerCase()] || "";
+    },
+    getTypeColor(typeName) {
+      const typeColors = {
+        normal: "#a8a878",
+        fire: "#f08030",
+        water: "#6890F0",
+        grass: "#78C850",
+        electric: "#F8D030",
+      };
+
       const sanitizedTypeName = typeName
         ? typeName.replace(/\W/g, "").toLowerCase()
         : "normal";
 
-      return typeColors[sanitizedTypeName] || ""; // Default to normal color if not found
+      return typeColors[sanitizedTypeName] || "";
     },
   },
 };
@@ -52,8 +65,6 @@ export default {
 <style scoped>
 .pokemon-card {
   border: 2px solid #ddd;
-  padding: 15px;
-  margin: 10px;
   border-radius: 10px;
   text-align: center;
 }

@@ -1,4 +1,3 @@
-<!-- src/views/HomeView.vue -->
 <template>
   <div class="home">
     <PokemonCard
@@ -41,29 +40,29 @@ export default {
 .home {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around; /* Center cards in a row */
+  justify-content: space-around;
 }
 
 .pokemon-card {
-  width: calc(25% - 20px); /* 25% width with some margin */
+  width: calc(25% - 20px);
   margin-bottom: 20px;
 }
 
 @media screen and (max-width: 992px) {
   .pokemon-card {
-    width: calc(33.33% - 20px); /* 33.33% width with some margin */
+    width: calc(33.33% - 20px);
   }
 }
 
 @media screen and (max-width: 768px) {
   .pokemon-card {
-    width: calc(50% - 20px); /* 50% width with some margin */
+    width: calc(50% - 20px);
   }
 }
 
 @media screen and (max-width: 576px) {
   .pokemon-card {
-    width: 100%; /* Full width on smaller screens */
+    width: 100%;
   }
 }
 </style>
