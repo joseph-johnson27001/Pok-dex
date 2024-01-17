@@ -1,4 +1,3 @@
-<!-- src/components/PokemonCard.vue -->
 <template>
   <div :class="['pokemon-card', getBackgroundColor()]">
     <img :src="pokemon.sprites.front_default" :alt="pokemon.name" />
@@ -7,9 +6,9 @@
       <span
         v-for="element in pokemon.types"
         :key="element.slot"
-        :class="['type', getTypeColor(element.type.name)]"
+        :class="getTypeColor(element.type.name)"
       >
-        {{ element.type.name }}
+        {{ capitalizeFirstLetter(element.type.name) }}
       </span>
     </div>
     <div class="stats">
@@ -30,6 +29,7 @@ export default {
     },
   },
   methods: {
+    // Background color update not happening
     getBackgroundColor() {
       const typeColors = {
         normal: "#a8a878",
@@ -37,13 +37,22 @@ export default {
         water: "#6890F0",
         grass: "#78C850",
         electric: "#F8D030",
+        // Add more types as needed
       };
 
-      // Use the first type for simplicity, modify this logic based on your preferences
+      // Use the first type for simplicity, or you can choose how to prioritize types
       const primaryType = this.pokemon.types[0]?.type.name || "normal";
 
-      return typeColors[primaryType.toLowerCase()] || "";
+      // If there is a second type, use its color as well
+      const secondaryType = this.pokemon.types[1]?.type.name;
+      const bgColor =
+        typeColors[primaryType.toLowerCase()] ||
+        typeColors[secondaryType?.toLowerCase()] ||
+        "";
+
+      return { "background-color": bgColor };
     },
+
     getTypeColor(typeName) {
       const typeColors = {
         normal: "#a8a878",
