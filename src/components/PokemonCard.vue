@@ -67,6 +67,7 @@ export default {
   border: 2px solid #ddd;
   border-radius: 10px;
   text-align: center;
+  background-color: white;
 }
 
 .types {
