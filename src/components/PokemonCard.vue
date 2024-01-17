@@ -1,13 +1,9 @@
 <template>
-  <div :class="['pokemon-card', getBackgroundColor()]">
+  <div :style="{ backgroundColor: getBackgroundColor() }" class="pokemon-card">
     <img :src="pokemon.sprites.front_default" :alt="pokemon.name" />
     <h3>{{ capitalizeFirstLetter(pokemon.name) }}</h3>
     <div class="types">
-      <span
-        v-for="element in pokemon.types"
-        :key="element.slot"
-        :class="getTypeColor(element.type.name)"
-      >
+      <span v-for="element in pokemon.types" :key="element.slot">
         {{ capitalizeFirstLetter(element.type.name) }}
       </span>
     </div>
@@ -29,7 +25,6 @@ export default {
     },
   },
   methods: {
-    // Background color update not happening
     getBackgroundColor() {
       const typeColors = {
         normal: "#a8a878",
@@ -37,46 +32,24 @@ export default {
         water: "#6890F0",
         grass: "#78C850",
         electric: "#F8D030",
-        // Add more types as needed
       };
 
-      // Use the first type for simplicity, or you can choose how to prioritize types
       const primaryType = this.pokemon.types[0]?.type.name || "normal";
-
-      // If there is a second type, use its color as well
       const secondaryType = this.pokemon.types[1]?.type.name;
       const bgColor =
         typeColors[primaryType.toLowerCase()] ||
         typeColors[secondaryType?.toLowerCase()] ||
         "";
 
-      return { "background-color": bgColor };
-    },
-
-    getTypeColor(typeName) {
-      const typeColors = {
-        normal: "#a8a878",
-        fire: "#f08030",
-        water: "#6890F0",
-        grass: "#78C850",
-        electric: "#F8D030",
-      };
-
-      const sanitizedTypeName = typeName
-        ? typeName.replace(/\W/g, "").toLowerCase()
-        : "normal";
-
-      return typeColors[sanitizedTypeName] || "";
+      return bgColor;
     },
     capitalizeFirstLetter(str) {
       return str.charAt(0).toUpperCase() + str.slice(1);
     },
     formatStatName(statName) {
-      // Special case: If the statName is "hp," capitalize both letters
       if (statName.toLowerCase() === "hp") {
         return statName.toUpperCase();
       }
-      // Otherwise, capitalize only the first letter
       return this.capitalizeFirstLetter(statName);
     },
   },
@@ -88,7 +61,6 @@ export default {
   border: 2px solid #ddd;
   border-radius: 10px;
   text-align: center;
-  background-color: white;
 }
 
 .types {
