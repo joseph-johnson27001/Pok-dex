@@ -72,7 +72,7 @@ export default {
 
 <style scoped>
 .pokemon-card {
-  border: 2px solid #ddd;
+  border: 1px solid black;
   border-radius: 10px;
   text-align: center;
 }

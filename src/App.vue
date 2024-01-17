@@ -21,7 +21,7 @@ export default {
 
 <style>
 body {
-  background-color: #ffffff;
+  background-color: #f7f7f7;
   margin: 0;
   font-family: Avenir, Helvetica, Arial, sans-serif;
 }
@@ -35,7 +35,7 @@ main {
   max-width: 1200px;
   margin: 0px auto;
   padding: 20px;
-  background-color: #f7f7f7;
+  background-color: white;
   border: 1px solid #ddd;
 }
 </style>
