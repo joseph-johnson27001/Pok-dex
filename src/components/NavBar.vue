@@ -1,5 +1,6 @@
 <template>
   <nav>
+    <img class="pokeball" src="@/assets/pokeball.png" alt="Pokeball" />
     <div class="logo">Pokedex</div>
   </nav>
 </template>
@@ -10,15 +11,22 @@ export default {};
 
 <style scoped>
 nav {
-  background-color: #333;
+  background-color: #ef5350;
   color: #fff;
   padding: 10px;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .logo {
   font-size: 1.5rem;
   font-weight: bold;
   color: #fff;
+}
+
+.pokeball {
+  width: 30px; /* Adjust the size as needed */
+  margin-right: 10px; /* Add spacing if needed */
 }
 </style>
