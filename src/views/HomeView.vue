@@ -5,6 +5,7 @@
         v-model="searchQuery"
         type="text"
         placeholder="Search by name or type"
+        class="search-input"
       />
     </div>
 
@@ -47,7 +48,6 @@ export default {
       }
 
       return this.detailedPokemonList.filter((pokemon) => {
-        // Check if the name or any type contains the search query
         return (
           pokemon.name.toLowerCase().includes(query) ||
           pokemon.types.some((type) =>
@@ -71,6 +71,20 @@ export default {
 <style scoped>
 .search-bar {
   margin-bottom: 20px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  font-size: 16px;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  outline: none;
+}
+
+.search-input:focus {
+  border: 1px solid #3498db;
 }
 
 .pokemon-cards {
