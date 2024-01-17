@@ -14,7 +14,8 @@
     </div>
     <div class="stats">
       <div v-for="stat in pokemon.stats" :key="stat.stat.name" class="stat">
-        <strong>{{ stat.stat.name }}:</strong> {{ stat.base_stat }}
+        <strong>{{ formatStatName(stat.stat.name) }}:</strong>
+        {{ stat.base_stat }}
       </div>
     </div>
   </div>
@@ -60,6 +61,14 @@ export default {
     },
     capitalizeFirstLetter(str) {
       return str.charAt(0).toUpperCase() + str.slice(1);
+    },
+    formatStatName(statName) {
+      // Special case: If the statName is "hp," capitalize both letters
+      if (statName.toLowerCase() === "hp") {
+        return statName.toUpperCase();
+      }
+      // Otherwise, capitalize only the first letter
+      return this.capitalizeFirstLetter(statName);
     },
   },
 };
