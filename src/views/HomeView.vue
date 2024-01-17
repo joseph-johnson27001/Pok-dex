@@ -95,7 +95,12 @@ export default {
 
 .pokemon-card {
   width: calc(25% - 20px);
+  transition: transform 0.1s ease-in-out;
   margin-bottom: 20px;
+}
+.pokemon-card:hover {
+  cursor: pointer;
+  transform: scale(1.05);
 }
 
 @media screen and (max-width: 992px) {
