@@ -38,5 +38,32 @@ export default {
 </script>
 
 <style scoped>
-/* Add your styling for the Home component */
+.home {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around; /* Center cards in a row */
+}
+
+.pokemon-card {
+  width: calc(25% - 20px); /* 25% width with some margin */
+  margin-bottom: 20px;
+}
+
+@media screen and (max-width: 992px) {
+  .pokemon-card {
+    width: calc(33.33% - 20px); /* 33.33% width with some margin */
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .pokemon-card {
+    width: calc(50% - 20px); /* 50% width with some margin */
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .pokemon-card {
+    width: 100%; /* Full width on smaller screens */
+  }
+}
 </style>
