@@ -3,6 +3,7 @@
     <img :src="pokemon.sprites.front_default" :alt="pokemon.name" />
     <h3>{{ capitalizeFirstLetter(pokemon.name) }}</h3>
     <div class="types">
+      Types:
       <span v-for="element in pokemon.types" :key="element.slot">
         {{ capitalizeFirstLetter(element.type.name) }}
       </span>
