@@ -36,5 +36,6 @@ main {
   padding: 20px;
   background-color: white;
   border: 1px solid #ddd;
+  min-height: 100vh;
 }
 </style>
