@@ -1,4 +1,3 @@
-<!-- src/views/Home.vue -->
 <template>
   <div class="home">
     <PokemonCard
@@ -37,8 +36,4 @@ export default {
 };
 </script>
 
-<style scoped>
-.home {
-  /* Add your styling for the Home component */
-}
-</style>
+<style scoped></style>

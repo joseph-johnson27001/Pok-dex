@@ -3,24 +3,27 @@
   <div id="app">
     <NavBar />
     <main>
-      <router-view />
+      <HomeView />
+      <!-- Use the Home component directly -->
     </main>
   </div>
 </template>
 
 <script>
 import NavBar from "@/components/NavBar";
+import HomeView from "@/views/HomeView"; // Import the Home component
 
 export default {
   components: {
     NavBar,
+    HomeView,
   },
 };
 </script>
 
 <style>
 body {
-  background-color: #f7f7f7; /* Slightly off-white background */
+  background-color: #f7f7f7;
   margin: 0;
   font-family: Avenir, Helvetica, Arial, sans-serif;
 }
