@@ -8,11 +8,13 @@
       />
     </div>
 
-    <PokemonCard
-      v-for="pokemon in filteredPokemonList"
-      :key="pokemon.name"
-      :pokemon="pokemon"
-    />
+    <div class="pokemon-cards">
+      <PokemonCard
+        v-for="pokemon in filteredPokemonList"
+        :key="pokemon.name"
+        :pokemon="pokemon"
+      />
+    </div>
   </div>
 </template>
 
@@ -71,7 +73,7 @@ export default {
   margin-bottom: 20px;
 }
 
-.home {
+.pokemon-cards {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
