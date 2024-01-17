@@ -37,7 +37,6 @@ nav {
 
 .pokeball {
   width: 30px;
-  margin-left: -20px;
   cursor: pointer;
 }
 </style>
