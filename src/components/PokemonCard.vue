@@ -77,6 +77,10 @@ export default {
   text-align: center;
 }
 
+h3 {
+  color: white;
+}
+
 .types {
   margin-top: 10px;
 }

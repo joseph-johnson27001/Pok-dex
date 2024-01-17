@@ -18,12 +18,11 @@ export default {
   },
 };
 </script>
-
 <style>
 body {
   background-color: #f7f7f7;
   margin: 0;
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Roboto", sans-serif; /* Update the font family here */
 }
 
 #app {
