@@ -2,7 +2,7 @@
 <template>
   <div :class="['pokemon-card', getBackgroundColor()]">
     <img :src="pokemon.sprites.front_default" :alt="pokemon.name" />
-    <h3>{{ pokemon.name }}</h3>
+    <h3>{{ capitalizeFirstLetter(pokemon.name) }}</h3>
     <div class="types">
       <span
         v-for="element in pokemon.types"
@@ -38,7 +38,7 @@ export default {
         electric: "#F8D030",
       };
 
-      // If there are multiple types, you can choose how to prioritize
+      // Use the first type for simplicity, modify this logic based on your preferences
       const primaryType = this.pokemon.types[0]?.type.name || "normal";
 
       return typeColors[primaryType.toLowerCase()] || "";
@@ -57,6 +57,9 @@ export default {
         : "normal";
 
       return typeColors[sanitizedTypeName] || "";
+    },
+    capitalizeFirstLetter(str) {
+      return str.charAt(0).toUpperCase() + str.slice(1);
     },
   },
 };

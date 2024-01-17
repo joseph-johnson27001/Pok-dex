@@ -1,17 +1,15 @@
-
 <template>
   <div id="app">
     <NavBar />
     <main>
       <HomeView />
-
     </main>
   </div>
 </template>
 
 <script>
 import NavBar from "@/components/NavBar";
-import HomeView from "@/views/HomeView"; 
+import HomeView from "@/views/HomeView";
 
 export default {
   components: {
@@ -23,7 +21,7 @@ export default {
 
 <style>
 body {
-  background-color: #ffffff; 
+  background-color: #ffffff;
   margin: 0;
   font-family: Avenir, Helvetica, Arial, sans-serif;
 }
@@ -35,10 +33,9 @@ body {
 
 main {
   max-width: 1200px;
-  margin: 0px auto; 
+  margin: 0px auto;
   padding: 20px;
-  background-color: #f7f7f7; 
-  border: 1px solid #ddd; 
-  border-radius: 10px; 
+  background-color: #f7f7f7;
+  border: 1px solid #ddd;
 }
 </style>
