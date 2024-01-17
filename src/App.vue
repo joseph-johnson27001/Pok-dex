@@ -22,7 +22,7 @@ export default {
 body {
   background-color: #f7f7f7;
   margin: 0;
-  font-family: "Roboto", sans-serif; /* Update the font family here */
+  font-family: "Roboto", sans-serif;
 }
 
 #app {

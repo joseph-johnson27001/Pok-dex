@@ -1,7 +1,15 @@
 <template>
   <div class="home">
+    <div class="search-bar">
+      <input
+        v-model="searchQuery"
+        type="text"
+        placeholder="Search by name or type"
+      />
+    </div>
+
     <PokemonCard
-      v-for="pokemon in detailedPokemonList"
+      v-for="pokemon in filteredPokemonList"
       :key="pokemon.name"
       :pokemon="pokemon"
     />
@@ -16,6 +24,7 @@ export default {
   data() {
     return {
       detailedPokemonList: [],
+      searchQuery: "",
     };
   },
   mounted() {
@@ -29,6 +38,27 @@ export default {
         console.error("Error fetching detailed Pokemon list:", error);
       }
     },
+    filterPokemonList() {
+      const query = this.searchQuery.toLowerCase();
+      if (!query) {
+        return this.detailedPokemonList;
+      }
+
+      return this.detailedPokemonList.filter((pokemon) => {
+        // Check if the name or any type contains the search query
+        return (
+          pokemon.name.toLowerCase().includes(query) ||
+          pokemon.types.some((type) =>
+            type.type.name.toLowerCase().includes(query)
+          )
+        );
+      });
+    },
+  },
+  computed: {
+    filteredPokemonList() {
+      return this.filterPokemonList();
+    },
   },
   components: {
     PokemonCard,
@@ -37,6 +67,10 @@ export default {
 </script>
 
 <style scoped>
+.search-bar {
+  margin-bottom: 20px;
+}
+
 .home {
   display: flex;
   flex-wrap: wrap;

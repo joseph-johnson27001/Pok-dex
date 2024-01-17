@@ -26,7 +26,7 @@ nav {
 }
 
 .pokeball {
-  width: 30px; /* Adjust the size as needed */
-  margin-right: 10px; /* Add spacing if needed */
+  width: 30px;
+  margin-right: 10px;
 }
 </style>
