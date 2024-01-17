@@ -1,7 +1,8 @@
+<!-- src/views/HomeView.vue -->
 <template>
   <div class="home">
     <PokemonCard
-      v-for="pokemon in pokemonList"
+      v-for="pokemon in detailedPokemonList"
       :key="pokemon.name"
       :pokemon="pokemon"
     />
@@ -15,18 +16,18 @@ import PokemonCard from "@/components/PokemonCard";
 export default {
   data() {
     return {
-      pokemonList: [],
+      detailedPokemonList: [],
     };
   },
   mounted() {
-    this.fetchPokemonList();
+    this.fetchDetailedPokemonList();
   },
   methods: {
-    async fetchPokemonList() {
+    async fetchDetailedPokemonList() {
       try {
-        this.pokemonList = await getPokemonList();
+        this.detailedPokemonList = await getPokemonList();
       } catch (error) {
-        console.error("Error fetching Pokemon list:", error);
+        console.error("Error fetching detailed Pokemon list:", error);
       }
     },
   },
@@ -36,4 +37,6 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+/* Add your styling for the Home component */
+</style>
