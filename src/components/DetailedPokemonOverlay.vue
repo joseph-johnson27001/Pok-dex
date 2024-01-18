@@ -169,6 +169,13 @@ export default {
 
 .section {
   flex: 1;
+  margin: 0px 20px;
+}
+
+.section p,
+.section li {
+  display: flex;
+  justify-content: space-between;
 }
 
 .close-button {
@@ -184,5 +191,11 @@ export default {
 
 .close-button:hover {
   transform: scale(1.05);
+}
+
+@media (max-width: 480px) {
+  .sections {
+    display: block;
+  }
 }
 </style>
