@@ -22,7 +22,16 @@
         </li>
       </ul>
       <!-- Add more details as needed -->
-      <button @click="closeOverlay">Close</button>
+      <button
+        @click="closeOverlay"
+        class="close-button"
+        :style="{
+          backgroundColor: getTypeColor(),
+          color: getButtonTextColor(),
+        }"
+      >
+        Close
+      </button>
     </div>
   </div>
 </template>
@@ -36,6 +45,17 @@ export default {
     },
   },
   methods: {
+    getButtonTextColor() {
+      // Use a light or dark text color based on the card's background color
+      const typeColor = this.getTypeColor().replace("#", "");
+      const r = parseInt(typeColor.substring(0, 2), 16);
+      const g = parseInt(typeColor.substring(2, 4), 16);
+      const b = parseInt(typeColor.substring(4, 6), 16);
+      const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+
+      return brightness > 128 ? "#000" : "#fff";
+    },
+
     closeOverlay() {
       // Emit an event to notify the parent to close the overlay
       this.$emit("closeOverlay");
@@ -135,5 +155,20 @@ export default {
 /* Adjusted to have a smooth transition for background color changes */
 .overlay-content {
   transition: background-color 0.3s;
+}
+
+.close-button {
+  padding: 10px;
+  border: 2px solid white;
+  color: white !important;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  outline: none;
+  transition: transform 0.1s;
+}
+
+.close-button:hover {
+  transform: scale(1.05);
 }
 </style>
