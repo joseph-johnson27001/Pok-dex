@@ -15,24 +15,22 @@ export default {};
 nav {
   background-color: #ef5350;
   color: #fff;
-  /* justify-content: center; */
 }
 
 .navigation-container {
   padding: 10px;
-  /* margin-left: -20px; */
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Add this line */
+  justify-content: space-between;
   max-width: 1200px;
   margin: auto;
 }
 
 .logo {
   font-size: 1.5rem;
-  font-weight: bold;
+  font-weight: 100;
   color: #fff;
-  flex-grow: 1; /* Add this line */
+  flex-grow: 1;
 }
 
 .pokeball {
