@@ -30,6 +30,15 @@ body {
   color: #2c3e50;
 }
 
+p,
+li {
+  color: white !important;
+}
+
+strong {
+  color: #2c3e50;
+}
+
 main {
   max-width: 1200px;
   margin: 0px auto;
