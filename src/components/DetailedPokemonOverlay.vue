@@ -1,5 +1,5 @@
 <template>
-  <div class="detailed-pokemon-overlay">
+  <div class="detailed-pokemon-overlay" @click.self="closeOverlay">
     <div class="overlay-content" :style="{ backgroundColor: getTypeColor() }">
       <!-- Display detailed information about the selected Pokemon -->
       <img
@@ -21,17 +21,7 @@
           {{ stat.base_stat }}
         </li>
       </ul>
-      <!-- Add more details as needed -->
-      <button
-        @click="closeOverlay"
-        class="close-button"
-        :style="{
-          backgroundColor: getTypeColor(),
-          color: getButtonTextColor(),
-        }"
-      >
-        Close
-      </button>
+      <button @click="closeOverlay" class="close-button">X</button>
     </div>
   </div>
 </template>
@@ -45,17 +35,6 @@ export default {
     },
   },
   methods: {
-    getButtonTextColor() {
-      // Use a light or dark text color based on the card's background color
-      const typeColor = this.getTypeColor().replace("#", "");
-      const r = parseInt(typeColor.substring(0, 2), 16);
-      const g = parseInt(typeColor.substring(2, 4), 16);
-      const b = parseInt(typeColor.substring(4, 6), 16);
-      const brightness = (r * 299 + g * 587 + b * 114) / 1000;
-
-      return brightness > 128 ? "#000" : "#fff";
-    },
-
     closeOverlay() {
       // Emit an event to notify the parent to close the overlay
       this.$emit("closeOverlay");
@@ -96,7 +75,6 @@ export default {
         fairy: "#EE99AC",
       };
 
-      // Use the first type for simplicity; adjust as needed
       const primaryType = this.pokemon.types[0]?.type.name || "normal";
       return typeColors[primaryType.toLowerCase()] || "#fff";
     },
@@ -130,6 +108,7 @@ export default {
   max-width: 600px;
   width: 100%;
   box-sizing: border-box;
+  position: relative; /* Add position relative */
 }
 
 .overlay-content img {
@@ -137,6 +116,17 @@ export default {
   max-height: 200px;
   object-fit: contain;
   margin-bottom: 10px;
+}
+
+.overlay-content button.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: white;
 }
 
 .overlay-content p {
@@ -152,7 +142,6 @@ export default {
   margin: 5px 0;
 }
 
-/* Adjusted to have a smooth transition for background color changes */
 .overlay-content {
   transition: background-color 0.3s;
 }
