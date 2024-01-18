@@ -1,5 +1,9 @@
 <template>
-  <div :style="{ backgroundColor: getBackgroundColor() }" class="pokemon-card">
+  <div
+    :style="{ backgroundColor: getBackgroundColor() }"
+    class="pokemon-card"
+    @click="handleCardClick"
+  >
     <img :src="pokemon.sprites.front_default" :alt="pokemon.name" />
     <h3>{{ capitalizeFirstLetter(pokemon.name) }}</h3>
     <div class="types">
@@ -56,6 +60,10 @@ export default {
         "";
 
       return bgColor;
+    },
+    handleCardClick() {
+      console.log("RUNNING", this.pokemon);
+      this.$emit("cardClick", this.pokemon);
     },
     capitalizeFirstLetter(str) {
       return str.charAt(0).toUpperCase() + str.slice(1);

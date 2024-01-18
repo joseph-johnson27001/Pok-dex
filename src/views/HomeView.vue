@@ -69,14 +69,22 @@
         v-for="pokemon in filteredPokemonList"
         :key="pokemon.name"
         :pokemon="pokemon"
+        @cardClick="showPokemonDetailOverlay"
       />
     </div>
+    <!-- Display Pokémon detail overlay conditionally -->
+    <DetailedPokemonOverlay
+      v-if="showOverlay"
+      :pokemon="selectedPokemon"
+      @closeOverlay="closeOverlay"
+    />
   </div>
 </template>
 
 <script>
 import { getPokemonList } from "@/services/pokemonService";
 import PokemonCard from "@/components/PokemonCard";
+import DetailedPokemonOverlay from "@/components/DetailedPokemonOverlay";
 
 export default {
   data() {
@@ -84,7 +92,13 @@ export default {
       detailedPokemonList: [],
       searchQuery: "",
       selectedGeneration: 1,
+      showOverlay: false,
+      selectedPokemon: null,
     };
+  },
+  components: {
+    PokemonCard,
+    DetailedPokemonOverlay,
   },
   mounted() {
     this.loadPokemonByGeneration(this.selectedGeneration);
@@ -116,14 +130,19 @@ export default {
         );
       });
     },
+    showPokemonDetailOverlay(pokemon) {
+      this.showOverlay = true;
+      this.selectedPokemon = pokemon;
+    },
+    closeOverlay() {
+      this.showOverlay = false;
+      this.selectedPokemon = null;
+    },
   },
   computed: {
     filteredPokemonList() {
       return this.filterPokemonList();
     },
-  },
-  components: {
-    PokemonCard,
   },
 };
 </script>
