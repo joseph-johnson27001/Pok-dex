@@ -129,6 +129,10 @@ export default {
   color: white;
 }
 
+.overlay-content h2 {
+  color: white;
+}
+
 .overlay-content p {
   margin: 5px 0;
 }
