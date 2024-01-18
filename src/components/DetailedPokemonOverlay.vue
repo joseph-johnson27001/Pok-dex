@@ -1,10 +1,15 @@
 <template>
   <div class="detailed-pokemon-overlay">
-    <div class="overlay-content">
+    <div class="overlay-content" :style="{ backgroundColor: getTypeColor() }">
       <!-- Display detailed information about the selected Pokemon -->
+      <img
+        :src="pokemon.sprites.other['official-artwork'].front_default"
+        :alt="pokemon.name"
+        class="pokemon-image"
+      />
       <h2>{{ capitalizeFirstLetter(pokemon.name) }}</h2>
-      <p>Height: {{ pokemon.height }} decimetres</p>
-      <p>Weight: {{ pokemon.weight }} hectograms</p>
+      <p>Height: {{ pokemon.height / 10 }} meters</p>
+      <p>Weight: {{ pokemon.weight / 10 }} kilograms</p>
       <p>Base Experience: {{ pokemon.base_experience }}</p>
       <p>Abilities: {{ getAbilities(pokemon.abilities) }}</p>
       <p>Types: {{ getTypes(pokemon.types) }}</p>
@@ -46,6 +51,33 @@ export default {
         .map((type) => this.capitalizeFirstLetter(type.type.name))
         .join(", ");
     },
+    getTypeColor() {
+      // Map Pokémon types to background colors
+      const typeColors = {
+        normal: "#A8A878",
+        fire: "#F08030",
+        water: "#6890F0",
+        grass: "#78C850",
+        electric: "#F8D030",
+        ice: "#98D8D8",
+        fighting: "#C03028",
+        poison: "#A040A0",
+        ground: "#E0C068",
+        flying: "#A890F0",
+        psychic: "#F85888",
+        bug: "#A8B820",
+        rock: "#B8A038",
+        ghost: "#705898",
+        dragon: "#7038F8",
+        dark: "#705848",
+        steel: "#B8B8D0",
+        fairy: "#EE99AC",
+      };
+
+      // Use the first type for simplicity; adjust as needed
+      const primaryType = this.pokemon.types[0]?.type.name || "normal";
+      return typeColors[primaryType.toLowerCase()] || "#fff";
+    },
   },
 };
 </script>
@@ -73,6 +105,13 @@ export default {
   box-sizing: border-box;
 }
 
+.overlay-content img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
 .overlay-content p {
   margin: 5px 0;
 }
@@ -84,5 +123,10 @@ export default {
 
 .overlay-content li {
   margin: 5px 0;
+}
+
+/* Adjusted to have a smooth transition for background color changes */
+.overlay-content {
+  transition: background-color 0.3s;
 }
 </style>
