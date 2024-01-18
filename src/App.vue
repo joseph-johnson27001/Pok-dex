@@ -31,8 +31,15 @@ body {
 }
 
 p,
-li {
+li,
+h2,
+h3 {
   color: white !important;
+}
+
+h2,
+h3 {
+  font-weight: 100;
 }
 
 strong {

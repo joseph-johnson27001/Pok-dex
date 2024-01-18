@@ -8,19 +8,30 @@
         class="pokemon-image"
       />
       <h2>{{ capitalizeFirstLetter(pokemon.name) }}</h2>
-      <p><strong>Height:</strong> {{ pokemon.height / 10 }} meters</p>
-      <p><strong>Weight:</strong> {{ pokemon.weight / 10 }} kilograms</p>
-      <p><strong>Base Experience:</strong> {{ pokemon.base_experience }}</p>
-      <p><strong>Abilities:</strong> {{ getAbilities(pokemon.abilities) }}</p>
-      <p><strong>Types:</strong> {{ getTypes(pokemon.types) }}</p>
-      <br />
-      <p><strong>Stats:</strong></p>
-      <ul>
-        <li v-for="stat in pokemon.stats" :key="stat.stat.name">
-          <strong>{{ formatStatName(stat.stat.name) }}:</strong>
-          {{ stat.base_stat }}
-        </li>
-      </ul>
+      <div class="sections">
+        <!-- SECTION 1 -->
+        <div class="section">
+          <h3>Basic Info</h3>
+          <p><strong>Height:</strong> {{ pokemon.height / 10 }} meters</p>
+          <p><strong>Weight:</strong> {{ pokemon.weight / 10 }} kilograms</p>
+          <p><strong>Base Experience:</strong> {{ pokemon.base_experience }}</p>
+          <p>
+            <strong>Abilities:</strong> {{ getAbilities(pokemon.abilities) }}
+          </p>
+          <p><strong>Types:</strong> {{ getTypes(pokemon.types) }}</p>
+        </div>
+        <br />
+        <!-- SECTION 2 -->
+        <div class="section">
+          <h3>Stats</h3>
+          <ul>
+            <li v-for="stat in pokemon.stats" :key="stat.stat.name">
+              <strong>{{ formatStatName(stat.stat.name) }}:</strong>
+              {{ stat.base_stat }}
+            </li>
+          </ul>
+        </div>
+      </div>
       <button @click="closeOverlay" class="close-button">X</button>
     </div>
   </div>
@@ -129,8 +140,9 @@ export default {
   color: white;
 }
 
-.overlay-content h2 {
-  color: white;
+.overlay-content h2,
+.overlay-content h3 {
+  color: white !important;
 }
 
 .overlay-content p {
@@ -140,14 +152,23 @@ export default {
 .overlay-content ul {
   padding: 0;
   list-style: none;
+  margin-top: 0;
 }
 
 .overlay-content li {
-  margin: 5px 0;
+  margin: 0;
 }
 
 .overlay-content {
   transition: background-color 0.3s;
+}
+
+.sections {
+  display: flex;
+}
+
+.section {
+  flex: 1;
 }
 
 .close-button {
