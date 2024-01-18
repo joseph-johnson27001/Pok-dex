@@ -8,15 +8,17 @@
         class="pokemon-image"
       />
       <h2>{{ capitalizeFirstLetter(pokemon.name) }}</h2>
-      <p>Height: {{ pokemon.height / 10 }} meters</p>
-      <p>Weight: {{ pokemon.weight / 10 }} kilograms</p>
-      <p>Base Experience: {{ pokemon.base_experience }}</p>
-      <p>Abilities: {{ getAbilities(pokemon.abilities) }}</p>
-      <p>Types: {{ getTypes(pokemon.types) }}</p>
-      <p>Stats:</p>
+      <p><strong>Height:</strong> {{ pokemon.height / 10 }} meters</p>
+      <p><strong>Weight:</strong> {{ pokemon.weight / 10 }} kilograms</p>
+      <p><strong>Base Experience:</strong> {{ pokemon.base_experience }}</p>
+      <p><strong>Abilities:</strong> {{ getAbilities(pokemon.abilities) }}</p>
+      <p><strong>Types:</strong> {{ getTypes(pokemon.types) }}</p>
+      <br />
+      <p><strong>Stats:</strong></p>
       <ul>
         <li v-for="stat in pokemon.stats" :key="stat.stat.name">
-          {{ capitalizeFirstLetter(stat.stat.name) }}: {{ stat.base_stat }}
+          <strong>{{ formatStatName(stat.stat.name) }}:</strong>
+          {{ stat.base_stat }}
         </li>
       </ul>
       <!-- Add more details as needed -->
@@ -77,6 +79,11 @@ export default {
       // Use the first type for simplicity; adjust as needed
       const primaryType = this.pokemon.types[0]?.type.name || "normal";
       return typeColors[primaryType.toLowerCase()] || "#fff";
+    },
+    formatStatName(statName) {
+      return statName.toLowerCase() === "hp"
+        ? "HP"
+        : this.capitalizeFirstLetter(statName);
     },
   },
 };
