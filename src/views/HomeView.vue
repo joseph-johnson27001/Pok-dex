@@ -1,5 +1,19 @@
 <template>
   <div class="home">
+    <!-- Generation buttons -->
+    <div class="generation-buttons">
+      <button @click="loadPokemonByGeneration(1)">Gen 1</button>
+      <button @click="loadPokemonByGeneration(2)">Gen 2</button>
+      <button @click="loadPokemonByGeneration(3)">Gen 3</button>
+      <button @click="loadPokemonByGeneration(4)">Gen 4</button>
+      <button @click="loadPokemonByGeneration(5)">Gen 5</button>
+      <button @click="loadPokemonByGeneration(6)">Gen 6</button>
+      <button @click="loadPokemonByGeneration(7)">Gen 7</button>
+      <button @click="loadPokemonByGeneration(8)">Gen 8</button>
+      <!-- Add buttons for other generations as needed -->
+    </div>
+
+    <!-- Search bar -->
     <div class="search-bar">
       <input
         v-model="searchQuery"
@@ -9,6 +23,7 @@
       />
     </div>
 
+    <!-- Display Pokémon cards -->
     <div class="pokemon-cards">
       <PokemonCard
         v-for="pokemon in filteredPokemonList"
@@ -31,14 +46,17 @@ export default {
     };
   },
   mounted() {
-    this.fetchDetailedPokemonList();
+    this.loadPokemonByGeneration(2);
   },
   methods: {
-    async fetchDetailedPokemonList() {
+    async loadPokemonByGeneration(generation) {
+      console.log("LOADING", generation);
       try {
-        this.detailedPokemonList = await getPokemonList();
+        const BASE_URL = `https://pokeapi.co/api/v2/generation/${generation}/`;
+        const response = await getPokemonList(BASE_URL);
+        this.detailedPokemonList = response;
       } catch (error) {
-        console.error("Error fetching detailed Pokemon list:", error);
+        console.error("Error fetching Pokémon list:", error);
       }
     },
     filterPokemonList() {
@@ -69,6 +87,12 @@ export default {
 </script>
 
 <style scoped>
+.generation-buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 10px;
+}
+
 .search-bar {
   margin-bottom: 20px;
 }
@@ -82,12 +106,6 @@ export default {
   border-radius: 5px;
   outline: none;
 }
-
-.search-input:focus {
-  border: 1px solid #3498db;
-  box-shadow: 0 0 5px rgba(52, 152, 219, 0.7);
-}
-
 .pokemon-cards {
   display: flex;
   flex-wrap: wrap;
