@@ -184,6 +184,10 @@ export default {
   outline: none;
 }
 
+.search-input:focus {
+  border: 1px solid #3498db;
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.7); /* Adjust the color and opacity as needed */
+}
 .pokemon-cards {
   display: flex;
   flex-wrap: wrap;
