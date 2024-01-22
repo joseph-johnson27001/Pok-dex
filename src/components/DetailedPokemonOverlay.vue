@@ -31,10 +31,18 @@
           </ul>
         </div>
       </div>
-      <button @click="navigatePokemon(-1)" class="arrow-button left">
+      <button
+        @click="navigatePokemon(-1)"
+        class="arrow-button left"
+        v-if="pokemonList.length > 1"
+      >
         &#8249;
       </button>
-      <button @click="navigatePokemon(1)" class="arrow-button right">
+      <button
+        @click="navigatePokemon(1)"
+        class="arrow-button right"
+        v-if="pokemonList.length > 1"
+      >
         &#8250;
       </button>
       <button @click="closeOverlay" class="close-button">X</button>
