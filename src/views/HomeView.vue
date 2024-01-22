@@ -51,18 +51,16 @@ export default {
     DetailedPokemonOverlay,
   },
   mounted() {
-    this.loadPokemonByGeneration(this.selectedGeneration);
+    this.loadPokemonInRange(0, 151);
   },
   methods: {
     clearSearch() {
       this.searchQuery = "";
     },
-    async loadPokemonByGeneration(generation) {
+    async loadPokemonInRange(startId, endId) {
       try {
-        const BASE_URL = `https://pokeapi.co/api/v2/generation/${generation}/`;
-        const response = await getPokemonList(BASE_URL);
+        const response = await getPokemonList(startId, endId);
         this.detailedPokemonList = response;
-        this.selectedGeneration = generation;
       } catch (error) {
         console.error("Error fetching Pokémon list:", error);
       }
