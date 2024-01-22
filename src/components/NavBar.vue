@@ -11,14 +11,13 @@
             v-model="selectedGeneration"
             @change="loadPokemonByGeneration"
           >
-            <option value="1">Gen 1</option>
-            <option value="2">Gen 2</option>
-            <option value="3">Gen 3</option>
-            <option value="4">Gen 4</option>
-            <option value="5">Gen 5</option>
-            <option value="6">Gen 6</option>
-            <option value="7">Gen 7</option>
-            <option value="8">Gen 8</option>
+            <option
+              v-for="generation in generations"
+              :key="generation.value"
+              :value="generation.value"
+            >
+              {{ generation.label }}
+            </option>
           </select>
         </div>
       </div>
@@ -31,6 +30,16 @@ export default {
   data() {
     return {
       selectedGeneration: 1,
+      generations: [
+        { label: "Gen 1", value: 1 },
+        { label: "Gen 2", value: 2 },
+        { label: "Gen 3", value: 3 },
+        { label: "Gen 4", value: 4 },
+        { label: "Gen 5", value: 5 },
+        { label: "Gen 6", value: 6 },
+        { label: "Gen 7", value: 7 },
+        { label: "Gen 8", value: 8 },
+      ],
     };
   },
   methods: {
@@ -82,6 +91,7 @@ nav {
 .generation-dropdown {
   display: flex !important;
   justify-content: end;
+  cursor: pointer;
 }
 .generation-dropdown select {
   background-color: #ef5350;
@@ -91,5 +101,6 @@ nav {
   border: 1px solid #ccc;
   border-radius: 5px;
   cursor: pointer;
+  outline: none;
 }
 </style>
