@@ -26,27 +26,26 @@
 </template>
 
 <script>
+// import { getPokemonList } from "@/services/pokemonService";
 export default {
   data() {
     return {
       selectedGeneration: 1,
       generations: [
-        { label: "Gen 1", value: 1 },
-        { label: "Gen 2", value: 2 },
-        { label: "Gen 3", value: 3 },
-        { label: "Gen 4", value: 4 },
-        { label: "Gen 5", value: 5 },
-        { label: "Gen 6", value: 6 },
-        { label: "Gen 7", value: 7 },
-        { label: "Gen 8", value: 8 },
+        { label: "Gen 1", value: 1, start: 1, end: 151 },
+        { label: "Gen 2", value: 2, start: 152, end: 251 },
+        { label: "Gen 3", value: 3, start: 252, end: 386 },
+        { label: "Gen 4", value: 4, start: 387, end: 493 },
+        { label: "Gen 5", value: 5, start: 494, end: 649 },
+        { label: "Gen 6", value: 6, start: 650, end: 721 },
+        { label: "Gen 7", value: 7, start: 722, end: 809 },
+        { label: "Gen 8", value: 8, start: 810, end: 898 },
       ],
     };
   },
+
   methods: {
-    loadPokemonByGeneration() {
-      // Implement your logic to load Pokémon based on the selected generation
-      // You can use this.selectedGeneration to get the selected value
-    },
+    async loadPokemonByGeneration() {},
   },
 };
 </script>
