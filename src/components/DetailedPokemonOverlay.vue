@@ -107,9 +107,12 @@ export default {
         : this.capitalizeFirstLetter(statName);
     },
     navigatePokemon(offset) {
-      const newIndex = this.currentIndex + offset;
-      if (newIndex >= 0 && newIndex < this.pokemonList.length) {
+      if (this.pokemonList && this.pokemonList.length > 0) {
+        const newIndex =
+          (this.currentIndex + offset + this.pokemonList.length) %
+          this.pokemonList.length;
         this.currentIndex = newIndex;
+        this.$emit("updatePokemon", this.pokemonList[newIndex]);
       }
     },
   },

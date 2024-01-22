@@ -76,7 +76,9 @@
     <DetailedPokemonOverlay
       v-if="showOverlay"
       :pokemon="selectedPokemon"
+      :pokemonList="filteredPokemonList"
       @closeOverlay="closeOverlay"
+      @updatePokemon="updateSelectedPokemon"
     />
   </div>
 </template>
@@ -94,6 +96,7 @@ export default {
       selectedGeneration: 1,
       showOverlay: false,
       selectedPokemon: null,
+      pokemonList: [],
     };
   },
   components: {
@@ -105,7 +108,6 @@ export default {
   },
   methods: {
     async loadPokemonByGeneration(generation) {
-      console.log("LOADING", generation);
       try {
         const BASE_URL = `https://pokeapi.co/api/v2/generation/${generation}/`;
         const response = await getPokemonList(BASE_URL);
@@ -129,6 +131,9 @@ export default {
           )
         );
       });
+    },
+    updateSelectedPokemon(newPokemon) {
+      this.selectedPokemon = newPokemon;
     },
     showPokemonDetailOverlay(pokemon) {
       this.showOverlay = true;

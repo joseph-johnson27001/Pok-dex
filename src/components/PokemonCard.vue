@@ -62,7 +62,6 @@ export default {
       return bgColor;
     },
     handleCardClick() {
-      console.log("RUNNING", this.pokemon);
       this.$emit("cardClick", this.pokemon);
     },
     capitalizeFirstLetter(str) {
