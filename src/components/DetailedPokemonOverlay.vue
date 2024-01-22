@@ -115,13 +115,11 @@ export default {
         const currentPokemon = this.pokemonList.find(
           (pokemon) => pokemon.id === this.index
         );
-
         if (currentPokemon) {
           const currentIndex = this.pokemonList.indexOf(currentPokemon);
           const newIndex =
             (currentIndex + offset + this.pokemonList.length) %
             this.pokemonList.length;
-
           this.currentIndex = newIndex;
           this.$emit("updatePokemon", this.pokemonList[newIndex]);
         }
