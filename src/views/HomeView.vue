@@ -1,56 +1,5 @@
 <template>
   <div class="home">
-    <!-- Generation buttons -->
-    <!-- <div class="generation-buttons">
-      <button
-        :class="{ active: selectedGeneration === 1 }"
-        @click="loadPokemonByGeneration(1)"
-      >
-        Gen 1
-      </button>
-      <button
-        :class="{ active: selectedGeneration === 2 }"
-        @click="loadPokemonByGeneration(2)"
-      >
-        Gen 2
-      </button>
-      <button
-        :class="{ active: selectedGeneration === 3 }"
-        @click="loadPokemonByGeneration(3)"
-      >
-        Gen 3
-      </button>
-      <button
-        :class="{ active: selectedGeneration === 4 }"
-        @click="loadPokemonByGeneration(4)"
-      >
-        Gen 4
-      </button>
-      <button
-        :class="{ active: selectedGeneration === 5 }"
-        @click="loadPokemonByGeneration(5)"
-      >
-        Gen 5
-      </button>
-      <button
-        :class="{ active: selectedGeneration === 6 }"
-        @click="loadPokemonByGeneration(6)"
-      >
-        Gen 6
-      </button>
-      <button
-        :class="{ active: selectedGeneration === 7 }"
-        @click="loadPokemonByGeneration(7)"
-      >
-        Gen 7
-      </button>
-      <button
-        :class="{ active: selectedGeneration === 8 }"
-        @click="loadPokemonByGeneration(8)"
-      >
-        Gen 8
-      </button>
-    </div> -->
     <div class="search-bar">
       <input
         v-model="searchQuery"
