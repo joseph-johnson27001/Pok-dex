@@ -112,7 +112,9 @@ export default {
     },
     navigatePokemon(offset) {
       if (this.pokemonList && this.pokemonList.length > 0) {
-        const newIndex = this.index - 1 + offset;
+        const newIndex =
+          (this.index - 1 + offset + this.pokemonList.length) %
+          this.pokemonList.length;
         this.currentIndex = newIndex;
         this.$emit("updatePokemon", this.pokemonList[newIndex]);
       }
