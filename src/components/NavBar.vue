@@ -2,7 +2,8 @@
   <nav>
     <div class="navigation-container">
       <img class="pokeball" src="@/assets/pokeball.png" alt="Pokeball" />
-      <span class="logo">Pokédex</span>
+      <img class="logo" src="@/assets/Pokemon.png" alt="Pokemon" />
+      <div></div>
     </div>
   </nav>
 </template>
@@ -27,10 +28,7 @@ nav {
 }
 
 .logo {
-  font-size: 1.5rem;
-  font-weight: 100;
-  color: #fff;
-  flex-grow: 1;
+  width: 110px;
 }
 
 .pokeball {
