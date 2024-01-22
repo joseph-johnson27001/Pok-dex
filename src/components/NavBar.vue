@@ -1,9 +1,12 @@
 <template>
   <nav>
     <div class="navigation-container">
-      <img class="pokeball" src="@/assets/pokeball.png" alt="Pokeball" />
-      <img class="logo" src="@/assets/Pokemon.png" alt="Pokemon" />
-      <div></div>
+      <div class="main-container">
+        <img class="pokeball" src="@/assets/pokeball.png" alt="Pokeball" />
+        <div class="logo-container">
+          <img class="logo" src="@/assets/Pokemon.png" alt="Pokemon" />
+        </div>
+      </div>
     </div>
   </nav>
 </template>
@@ -19,12 +22,19 @@ nav {
 }
 
 .navigation-container {
-  padding: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   max-width: 1200px;
   margin: auto;
+}
+
+.main-container {
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
 }
 
 .logo {
