@@ -53,6 +53,10 @@ export default {
       type: Array,
       required: true,
     },
+    index: {
+      type: Number,
+      required: true,
+    },
   },
   data() {
     return {
@@ -108,9 +112,7 @@ export default {
     },
     navigatePokemon(offset) {
       if (this.pokemonList && this.pokemonList.length > 0) {
-        const newIndex =
-          (this.currentIndex + offset + this.pokemonList.length) %
-          this.pokemonList.length;
+        const newIndex = this.index - 1 + offset;
         this.currentIndex = newIndex;
         this.$emit("updatePokemon", this.pokemonList[newIndex]);
       }

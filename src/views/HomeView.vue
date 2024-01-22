@@ -77,6 +77,7 @@
       v-if="showOverlay"
       :pokemon="selectedPokemon"
       :pokemonList="filteredPokemonList"
+      :index="selectedPokemon.id"
       @closeOverlay="closeOverlay"
       @updatePokemon="updateSelectedPokemon"
     />
