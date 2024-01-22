@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <!-- Generation buttons -->
-    <div class="generation-buttons">
+    <!-- <div class="generation-buttons">
       <button
         :class="{ active: selectedGeneration === 1 }"
         @click="loadPokemonByGeneration(1)"
@@ -50,7 +50,7 @@
       >
         Gen 8
       </button>
-    </div>
+    </div> -->
     <div class="search-bar">
       <input
         v-model="searchQuery"
