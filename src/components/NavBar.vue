@@ -38,7 +38,12 @@ nav {
 }
 
 .logo {
-  width: 110px;
+  width: 100px;
+}
+
+.pokeball {
+  display: flex;
+  align-self: center;
 }
 
 .pokeball {

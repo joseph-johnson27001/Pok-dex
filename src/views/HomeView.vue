@@ -50,10 +50,7 @@
       >
         Gen 8
       </button>
-      <!-- Add buttons for other generations as needed -->
     </div>
-
-    <!-- Search bar -->
     <div class="search-bar">
       <input
         v-model="searchQuery"
@@ -61,9 +58,10 @@
         placeholder="Search by name or type"
         class="search-input"
       />
+      <span v-if="searchQuery" @click="clearSearch" class="clear-button"
+        >X</span
+      >
     </div>
-
-    <!-- Display Pokémon cards -->
     <div class="pokemon-cards">
       <PokemonCard
         v-for="pokemon in filteredPokemonList"
@@ -72,7 +70,6 @@
         @cardClick="showPokemonDetailOverlay"
       />
     </div>
-    <!-- Display Pokémon detail overlay conditionally -->
     <DetailedPokemonOverlay
       v-if="showOverlay"
       :pokemon="selectedPokemon"
@@ -108,6 +105,9 @@ export default {
     this.loadPokemonByGeneration(this.selectedGeneration);
   },
   methods: {
+    clearSearch() {
+      this.searchQuery = "";
+    },
     async loadPokemonByGeneration(generation) {
       try {
         const BASE_URL = `https://pokeapi.co/api/v2/generation/${generation}/`;
@@ -157,8 +157,8 @@ export default {
 .generation-buttons {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap; /* Allow buttons to wrap to the next line */
-  gap: 10px; /* Add some space between buttons */
+  flex-wrap: wrap;
+  gap: 10px;
   margin-bottom: 10px;
 }
 
@@ -172,12 +172,26 @@ export default {
 }
 
 .generation-buttons button.active {
-  background-color: #3498db; /* Change to your desired active color */
+  background-color: #3498db;
   color: #fff;
 }
 
 .search-bar {
   margin-bottom: 20px;
+  position: relative;
+}
+
+.clear-button {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #777;
+}
+
+.clear-button:hover {
+  color: #333;
 }
 
 .search-input {
@@ -192,7 +206,7 @@ export default {
 
 .search-input:focus {
   border: 1px solid #3498db;
-  box-shadow: 0 0 5px rgba(52, 152, 219, 0.7); /* Adjust the color and opacity as needed */
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.7);
 }
 .pokemon-cards {
   display: flex;
