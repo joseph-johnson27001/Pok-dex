@@ -7,10 +7,7 @@
           <img class="logo" src="@/assets/Pokemon.png" alt="Pokemon" />
         </div>
         <div class="generation-dropdown">
-          <select
-            v-model="selectedGeneration"
-            @change="loadPokemonByGeneration"
-          >
+          <select v-model="selectedGeneration">
             <option
               v-for="generation in generations"
               :key="generation.value"
@@ -26,7 +23,6 @@
 </template>
 
 <script>
-// import { getPokemonList } from "@/services/pokemonService";
 export default {
   data() {
     return {
@@ -42,10 +38,6 @@ export default {
         { label: "Gen 8", value: 8, start: 810, end: 898 },
       ],
     };
-  },
-
-  methods: {
-    async loadPokemonByGeneration() {},
   },
 };
 </script>
