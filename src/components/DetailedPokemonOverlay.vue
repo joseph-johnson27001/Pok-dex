@@ -1,7 +1,6 @@
 <template>
   <div class="detailed-pokemon-overlay" @click.self="closeOverlay">
     <div class="overlay-content" :style="{ backgroundColor: getTypeColor() }">
-      <!-- Display detailed information about the selected Pokemon -->
       <img
         :src="pokemon.sprites.other['official-artwork'].front_default"
         :alt="pokemon.name"
@@ -32,6 +31,12 @@
           </ul>
         </div>
       </div>
+      <button @click="navigatePokemon(-1)" class="arrow-button left">
+        &#8249;
+      </button>
+      <button @click="navigatePokemon(1)" class="arrow-button right">
+        &#8250;
+      </button>
       <button @click="closeOverlay" class="close-button">X</button>
     </div>
   </div>
@@ -44,10 +49,18 @@ export default {
       type: Object,
       required: true,
     },
+    pokemonList: {
+      type: Array,
+      required: true,
+    },
+  },
+  data() {
+    return {
+      currentIndex: 0,
+    };
   },
   methods: {
     closeOverlay() {
-      // Emit an event to notify the parent to close the overlay
       this.$emit("closeOverlay");
     },
     capitalizeFirstLetter(str) {
@@ -64,7 +77,6 @@ export default {
         .join(", ");
     },
     getTypeColor() {
-      // Map Pokémon types to background colors
       const typeColors = {
         normal: "#A8A878",
         fire: "#F08030",
@@ -94,12 +106,17 @@ export default {
         ? "HP"
         : this.capitalizeFirstLetter(statName);
     },
+    navigatePokemon(offset) {
+      const newIndex = this.currentIndex + offset;
+      if (newIndex >= 0 && newIndex < this.pokemonList.length) {
+        this.currentIndex = newIndex;
+      }
+    },
   },
 };
 </script>
 
 <style scoped>
-/* Add necessary styles for the overlay */
 .detailed-pokemon-overlay {
   position: fixed;
   top: 0;
@@ -119,7 +136,7 @@ export default {
   max-width: 600px;
   width: 100%;
   box-sizing: border-box;
-  position: relative; /* Add position relative */
+  position: relative;
 }
 
 .overlay-content img {
@@ -197,5 +214,24 @@ export default {
   .sections {
     display: block;
   }
+}
+
+.arrow-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: white;
+}
+
+.left {
+  left: 10px;
+}
+
+.right {
+  right: 10px;
 }
 </style>
