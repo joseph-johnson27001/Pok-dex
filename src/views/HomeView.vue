@@ -67,6 +67,7 @@ export default {
           generationInfo.end
         );
         this.detailedPokemonList = response;
+        this.$store.state.isLoading = false;
       } catch (error) {
         console.error("Error fetching Pokémon list:", error);
       }

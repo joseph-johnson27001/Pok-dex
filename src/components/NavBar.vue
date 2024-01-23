@@ -52,6 +52,7 @@ export default {
   methods: {
     ...mapMutations(["setSelectedGeneration"]),
     loadPokemonByGeneration() {
+      this.$store.state.isLoading = true;
       this.setSelectedGeneration(this.selectedGeneration);
     },
     updateSelectedGeneration() {

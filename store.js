@@ -5,6 +5,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    isLoading: true,
     selectedGeneration: 1,
     generations: [
       { label: "Gen 1", value: 1, start: 1, end: 151 },

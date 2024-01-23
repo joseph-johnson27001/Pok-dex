@@ -16,7 +16,6 @@ export const getPokemonList = async (startId, endId) => {
         return detailsResponse.data;
       })
     );
-
     return detailedPokemonList;
   } catch (error) {
     console.error("Error fetching Pokemon list:", error);

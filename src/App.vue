@@ -2,7 +2,8 @@
   <div id="app">
     <NavBar />
     <main>
-      <HomeView />
+      <LoadingAnimation v-show="this.$store.state.isLoading" />
+      <HomeView v-show="!this.$store.state.isLoading" />
     </main>
   </div>
 </template>
@@ -10,11 +11,13 @@
 <script>
 import NavBar from "@/components/NavBar";
 import HomeView from "@/views/HomeView";
+import LoadingAnimation from "@/components/LoadingAnimation.vue";
 
 export default {
   components: {
     NavBar,
     HomeView,
+    LoadingAnimation,
   },
 };
 </script>
