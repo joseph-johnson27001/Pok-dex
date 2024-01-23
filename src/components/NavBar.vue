@@ -7,7 +7,10 @@
           <img class="logo" src="@/assets/Pokemon.png" alt="Pokemon" />
         </div>
         <div class="generation-dropdown">
-          <select v-model="selectedGeneration">
+          <select
+            v-model="$store.state.selectedGeneration"
+            @change="updateSelectedGeneration"
+          >
             <option
               v-for="generation in generations"
               :key="generation.value"
@@ -23,10 +26,12 @@
 </template>
 
 <script>
+// Import mapState and mapMutations from Vuex
+import { mapMutations } from "vuex";
+
 export default {
   data() {
     return {
-      selectedGeneration: 1,
       generations: [
         { label: "Gen 1", value: 1, start: 1, end: 151 },
         { label: "Gen 2", value: 2, start: 152, end: 251 },
@@ -38,6 +43,20 @@ export default {
         { label: "Gen 8", value: 8, start: 810, end: 898 },
       ],
     };
+  },
+  computed: {
+    selectedGeneration() {
+      return this.$store.state.selectedGeneration;
+    },
+  },
+  methods: {
+    ...mapMutations(["setSelectedGeneration"]),
+    loadPokemonByGeneration() {
+      this.setSelectedGeneration(this.selectedGeneration);
+    },
+    updateSelectedGeneration() {
+      this.loadPokemonByGeneration();
+    },
   },
 };
 </script>
