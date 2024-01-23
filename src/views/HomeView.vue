@@ -51,11 +51,36 @@ export default {
     DetailedPokemonOverlay,
   },
   mounted() {
-    this.loadPokemonByGeneration();
+    this.loadPokemonData();
   },
   methods: {
     clearSearch() {
       this.searchQuery = "";
+    },
+    async loadPokemonData() {
+      this.$store.state.isLoading = true;
+      try {
+        await this.loadPokemonByGeneration();
+        await this.preloadImages();
+        this.$nextTick(() => {
+          this.$store.state.isLoading = false;
+        });
+      } catch (error) {
+        console.error("Error loading Pokémon data:", error);
+        this.$store.state.isLoading = false;
+      }
+    },
+    async preloadImages() {
+      const imagePromises = this.detailedPokemonList.map((pokemon) => {
+        return new Promise((resolve, reject) => {
+          const img = new Image();
+          img.src = pokemon.sprites.front_default;
+          img.onload = resolve;
+          img.onerror = reject;
+        });
+      });
+
+      await Promise.all(imagePromises);
     },
     async loadPokemonByGeneration() {
       const selectedGeneration = this.$store.state.selectedGeneration;
@@ -67,7 +92,6 @@ export default {
           generationInfo.end
         );
         this.detailedPokemonList = response;
-        this.$store.state.isLoading = false;
       } catch (error) {
         console.error("Error fetching Pokémon list:", error);
       }
@@ -105,7 +129,7 @@ export default {
     },
   },
   watch: {
-    "$store.state.selectedGeneration": "loadPokemonByGeneration",
+    "$store.state.selectedGeneration": "loadPokemonData",
   },
   computed: {
     filteredPokemonList() {
