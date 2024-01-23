@@ -64,7 +64,10 @@ export default {
       this.loadPokemonByGeneration();
     },
     firstGeneration() {
-      this.$store.state.selectedGeneration = 1;
+      if (this.$store.state.selectedGeneration != 1) {
+        this.$store.state.isLoading = true;
+        this.$store.state.selectedGeneration = 1;
+      }
     },
   },
 };
