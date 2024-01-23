@@ -2,7 +2,12 @@
   <nav>
     <div class="navigation-container">
       <div class="main-container">
-        <img class="pokeball" src="@/assets/pokeball.png" alt="Pokeball" />
+        <img
+          class="pokeball"
+          src="@/assets/pokeball.png"
+          alt="Pokeball"
+          @click="firstGeneration"
+        />
         <div class="logo-container">
           <img class="logo" src="@/assets/Pokemon.png" alt="Pokemon" />
         </div>
@@ -57,6 +62,9 @@ export default {
     },
     updateSelectedGeneration() {
       this.loadPokemonByGeneration();
+    },
+    firstGeneration() {
+      this.$store.state.selectedGeneration = 1;
     },
   },
 };
