@@ -66,12 +66,26 @@ export default {
       required: true,
     },
   },
+  mounted() {
+    window.addEventListener("keydown", this.handleKeyDown);
+  },
+
+  beforeDestroy() {
+    window.removeEventListener("keydown", this.handleKeyDown);
+  },
   data() {
     return {
       currentIndex: 0,
     };
   },
   methods: {
+    handleKeyDown(event) {
+      if (event.key === "ArrowLeft" && this.pokemonList.length > 1) {
+        this.navigatePokemon(-1);
+      } else if (event.key === "ArrowRight" && this.pokemonList.length > 1) {
+        this.navigatePokemon(1);
+      }
+    },
     closeOverlay() {
       this.$emit("closeOverlay");
     },

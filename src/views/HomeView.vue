@@ -79,7 +79,6 @@ export default {
           img.onerror = reject;
         });
       });
-
       await Promise.all(imagePromises);
     },
     async loadPokemonByGeneration() {
@@ -106,7 +105,6 @@ export default {
       if (!query) {
         return this.detailedPokemonList;
       }
-
       return this.detailedPokemonList.filter((pokemon) => {
         return (
           pokemon.name.toLowerCase().includes(query) ||
