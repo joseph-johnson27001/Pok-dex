@@ -81,7 +81,7 @@ nav {
 
 .generation-dropdown {
   display: flex !important;
-  justify-content: end;
+  justify-content: flex-end;
   cursor: pointer;
 }
 .generation-dropdown select {
