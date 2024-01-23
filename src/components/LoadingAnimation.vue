@@ -37,8 +37,8 @@ body {
 .pokeball:after {
   content: "";
   position: absolute;
-  width: 60px;
-  height: 30px;
+  width: 100px;
+  height: 100px;
   background-color: red;
   border-bottom: 4px solid;
   top: -4px;
