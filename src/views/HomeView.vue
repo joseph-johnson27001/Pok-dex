@@ -77,14 +77,6 @@ export default {
         (generation) => generation.value === generationValue
       );
     },
-    async loadPokemonInRange(startId, endId) {
-      try {
-        const response = await getPokemonList(startId, endId);
-        this.detailedPokemonList = response;
-      } catch (error) {
-        console.error("Error fetching Pokémon list:", error);
-      }
-    },
     filterPokemonList() {
       const query = this.searchQuery.toLowerCase();
       if (!query) {
