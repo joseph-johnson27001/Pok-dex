@@ -2,7 +2,14 @@
   <div class="detailed-pokemon-overlay" @click.self="closeOverlay">
     <div class="overlay-content" :style="{ backgroundColor: getTypeColor() }">
       <img
+        v-if="pokemon.sprites.other['official-artwork'].front_default"
         :src="pokemon.sprites.other['official-artwork'].front_default"
+        :alt="pokemon.name"
+        class="pokemon-image"
+      />
+      <img
+        v-else
+        :src="pokemon.sprites.front_default"
         :alt="pokemon.name"
         class="pokemon-image"
       />
