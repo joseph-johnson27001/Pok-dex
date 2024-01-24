@@ -31,7 +31,6 @@
 </template>
 
 <script>
-// Import mapState and mapMutations from Vuex
 import { mapMutations } from "vuex";
 
 export default {
