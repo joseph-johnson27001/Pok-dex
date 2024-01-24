@@ -16,6 +16,7 @@ export default new Vuex.Store({
       { label: "Gen 6", value: 6, start: 650, end: 721 },
       { label: "Gen 7", value: 7, start: 722, end: 809 },
       { label: "Gen 8", value: 8, start: 810, end: 898 },
+      { label: "All", value: 9, start: 1, end: 898 },
     ],
   },
   mutations: {

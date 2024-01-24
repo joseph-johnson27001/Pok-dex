@@ -193,15 +193,14 @@ export default {
   box-shadow: 0 0 5px rgba(52, 152, 219, 0.7);
 }
 .pokemon-cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(calc(25% - 20px), 1fr));
+  gap: 20px;
 }
 
 .pokemon-card {
-  width: calc(25% - 20px);
+  width: 100%;
   transition: transform 0.1s ease-in-out;
-  margin-bottom: 20px;
 }
 
 .pokemon-card:hover {
@@ -210,8 +209,8 @@ export default {
 }
 
 @media screen and (max-width: 992px) {
-  .pokemon-card {
-    width: calc(33.33% - 20px);
+  .pokemon-cards {
+    grid-template-columns: 1fr 1fr 1fr;
   }
 
   .generation-buttons button {
@@ -220,8 +219,8 @@ export default {
 }
 
 @media screen and (max-width: 768px) {
-  .pokemon-card {
-    width: calc(50% - 20px);
+  .pokemon-cards {
+    grid-template-columns: 1fr 1fr;
   }
 
   .generation-buttons button {
@@ -230,8 +229,8 @@ export default {
 }
 
 @media screen and (max-width: 576px) {
-  .pokemon-card {
-    width: 100%;
+  .pokemon-cards {
+    grid-template-columns: 1fr;
   }
 
   .generation-buttons button {
