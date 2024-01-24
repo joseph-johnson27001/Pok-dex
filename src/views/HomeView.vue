@@ -195,7 +195,7 @@ export default {
 .pokemon-cards {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .pokemon-card {
@@ -215,9 +215,7 @@ export default {
   }
 
   .generation-buttons button {
-    flex-basis: calc(
-      33.33% - 20px
-    ); /* Adjust the width of buttons for medium screens */
+    flex-basis: calc(33.33% - 20px);
   }
 }
 
@@ -227,9 +225,7 @@ export default {
   }
 
   .generation-buttons button {
-    flex-basis: calc(
-      50% - 20px
-    ); /* Adjust the width of buttons for small screens */
+    flex-basis: calc(50% - 20px);
   }
 }
 
@@ -239,7 +235,7 @@ export default {
   }
 
   .generation-buttons button {
-    flex-basis: 100%; /* Adjust the width of buttons for extra small screens */
+    flex-basis: 100%;
   }
 }
 </style>

@@ -57,7 +57,6 @@ body {
   z-index: 1;
 }
 
-/* AnimationFrames */
 @keyframes frames {
   0% {
     transform: rotate(0deg);
