@@ -8,8 +8,8 @@
         class="search-input"
       />
       <span v-if="searchQuery" @click="clearSearch" class="clear-button"
-        >X</span
-      >
+        >X
+      </span>
     </div>
     <div class="pokemon-cards">
       <PokemonCard
