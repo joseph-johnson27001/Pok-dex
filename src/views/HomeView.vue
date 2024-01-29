@@ -1,12 +1,16 @@
 <template>
   <div class="home">
     <div class="search-bar">
-      <input
-        v-model="searchQuery"
-        type="text"
-        placeholder="Search by name or type"
-        class="search-input"
-      />
+      <div class="search-input-container">
+        <input
+          v-model="searchQuery"
+          type="text"
+          class="search-input"
+          placeholder="Search for Pokémon or type"
+        />
+        <!-- Search icon -->
+        <span class="search-icon">🔍</span>
+      </div>
       <span v-if="searchQuery" @click="clearSearch" class="clear-button"
         >X
       </span>
@@ -168,7 +172,7 @@ export default {
 .clear-button {
   position: absolute;
   top: 50%;
-  right: 10px;
+  right: 40px;
   transform: translateY(-50%);
   cursor: pointer;
   color: #777;
@@ -178,19 +182,34 @@ export default {
   color: #333;
 }
 
-.search-input {
+.search-input-container {
+  position: relative;
   width: 100%;
-  padding: 10px;
+}
+
+.search-input {
+  width: calc(100% - 40px);
+  padding: 15px 20px;
   box-sizing: border-box;
   font-size: 16px;
   border: 1px solid lightgrey;
-  border-radius: 5px;
+  border-radius: 20px;
   outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  padding-left: 40px;
 }
 
 .search-input:focus {
-  border: 1px solid #3498db;
+  border-color: #3498db;
   box-shadow: 0 0 5px rgba(52, 152, 219, 0.7);
+}
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  left: 30px;
+  transform: translateY(-50%);
+  color: #777;
 }
 .pokemon-cards {
   display: grid;
