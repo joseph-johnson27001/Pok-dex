@@ -197,6 +197,7 @@ export default {
   outline: none;
   transition: border-color 0.1s, box-shadow 0.1s;
   padding-left: 35px;
+  font-weight: 400;
 }
 
 .search-input:focus {

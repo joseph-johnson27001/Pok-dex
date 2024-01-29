@@ -25,7 +25,7 @@ export default {
 body {
   background-color: #f7f7f7;
   margin: 0;
-  font-family: "Flexo-Medium", arial, sans-serif;
+  font-family: "Quicksand", sans-serif;
 }
 
 #app {
