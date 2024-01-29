@@ -6,7 +6,7 @@
           v-model="searchQuery"
           type="text"
           class="search-input"
-          placeholder="Search for Pokémon or type"
+          placeholder="Search by Pokémon or type"
         />
         <!-- Search icon -->
         <span class="search-icon">🔍</span>
@@ -172,7 +172,7 @@ export default {
 .clear-button {
   position: absolute;
   top: 50%;
-  right: 40px;
+  right: 15px;
   transform: translateY(-50%);
   cursor: pointer;
   color: #777;
@@ -188,15 +188,15 @@ export default {
 }
 
 .search-input {
-  width: calc(100% - 40px);
-  padding: 15px 20px;
+  width: 100%;
+  padding: 15px 20px 10px;
   box-sizing: border-box;
   font-size: 16px;
   border: 1px solid lightgrey;
   border-radius: 20px;
   outline: none;
-  transition: border-color 0.3s, box-shadow 0.3s;
-  padding-left: 40px;
+  transition: border-color 0.1s, box-shadow 0.1s;
+  padding-left: 35px;
 }
 
 .search-input:focus {
@@ -207,7 +207,7 @@ export default {
 .search-icon {
   position: absolute;
   top: 50%;
-  left: 30px;
+  left: 10px;
   transform: translateY(-50%);
   color: #777;
 }
