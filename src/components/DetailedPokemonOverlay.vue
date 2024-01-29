@@ -91,6 +91,8 @@ export default {
         this.navigatePokemon(-1);
       } else if (event.key === "ArrowRight" && this.pokemonList.length > 1) {
         this.navigatePokemon(1);
+      } else if (event.key === "Escape") {
+        this.closeOverlay();
       }
     },
     closeOverlay() {
