@@ -197,6 +197,7 @@ export default {
   outline: none;
   transition: border-color 0.1s, box-shadow 0.1s;
   padding-left: 35px;
+  font-family: "Quicksand", sans-serif;
   font-weight: 400;
 }
 
